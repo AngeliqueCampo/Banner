@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner</title>
+    <style>
+        body {
+            font-family: Arial;
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            margin: 0;
+            background-color: #FFF7E8;
+        }
+
+        button {
+            width: 200px;
+            height: 100px;
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+
+        #content {
+            margin: 10px;
+        }
+
+        .container {
+            border-style: solid;
+            background-color: #E8F0FF;
+            height: auto;
+            width: 500px;
+            margin-top: 10px;
+            padding: 25px;
+        }
+        
+        .button-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    
+        ul {
+            text-align: left;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 id="title">Hi, I'm Angelique.</h2>
+    <div class="container">
+        <div id="content-list">
+            <h2>My Bucketlist</h2>
+            <ul style="text-align: left;">
+                <li>Build a cat house.</li>
+                <li>Buy a home.</li>
+                <li>Learn and be fluent with an instrument.</li>
+                <li>Travel to Europe.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Add input item -->
+    <p>Add New: <input type="text" id="newItem"></p>
+
+    <!-- Button container -->
+    <div class="button-container">
+        <button onclick="addNewElement()">Add new item on the list</button>
+        <button onclick="changeFont()">Change Font</button>
+        <button onclick="changeFontWeight()">Change to Bold</button>
+    </div>
+
+    <script>
+        let fontStyle = ['Verdana', 'Georgia', 'Helvetica', 'Arial', 'Courier New'];
+        let index = 0;
+
+        function changeFont() {
+            document.body.style.fontFamily = fontStyle[index];
+            index = (index + 1) % fontStyle.length;
+        }
+
+        let isBold = false;
+        function changeFontWeight() {
+            isBold = !isBold;
+            document.querySelector('body').style.fontWeight = isBold ? "bold" : "normal";
+        }
+
+        function addNewElement() {
+            var myInput = document.getElementById("newItem").value;
+            if (myInput.trim() !== "") {
+                var ul = document.querySelector('ul');
+                var li = document.createElement('li');
+                li.appendChild(document.createTextNode(myInput));
+                ul.appendChild(li);
+                document.getElementById("newItem").value = "";
+            }
+        }
+    </script>
+</body>
+</html>
